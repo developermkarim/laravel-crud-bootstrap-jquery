@@ -18,8 +18,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->longText('detail');
             $table->string('slug');
+            $table->string('development_sector');
+            $table->string('lang_framework');
             $table->string('feature');
-            $table->string('added_by');
+            $table->string('author');
             $table->integer('view_count')->default(0);
             $table->boolean('status')->default(true);
             $table->timestamps();

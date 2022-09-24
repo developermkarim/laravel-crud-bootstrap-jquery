@@ -38,7 +38,10 @@
                     <th scope="col">S/L</th>
                     <th scope="col">Name</th>
                     <th scope="col">Details</th>
-                    <th scope="col">Added_by</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Development Sector</th>
+                 
+                    <th scope="col">Used In Tech-Company</th>
                     <th scope="col">Feature</th>
                     <th scope="col">Status</th>
                     <th class="text-center" scope="col">Actions</th>
@@ -56,6 +59,18 @@
                     </td>
                     <td>{{$admin}}</td>
 
+                    <td>
+                        <span>{{$post->development_sector}}</span>
+                    </td>
+                    <td>
+                        @php
+                            $framworks = json_decode($post->lang_framework)
+                        @endphp
+
+                       @foreach ($framworks as $item)
+                           {{$item}},
+                       @endforeach
+                    </td>
                     <td class="text-center">
                         <img src="{{asset('/assets/images/'.$post->feature)}}" height="50px" width="50px" alt="No image found">
                     </td>

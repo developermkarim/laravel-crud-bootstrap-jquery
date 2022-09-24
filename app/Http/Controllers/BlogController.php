@@ -6,6 +6,8 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
 // use  Illuminate\Http\UploadedFile\extention;
 
 class BlogController extends Controller
@@ -15,14 +17,24 @@ class BlogController extends Controller
    {
     // $this->middleware('auth');
    }
-
+/* This is also for DRY */
+public function fileExisting($path)
+{
+   
+    if(File::exists($path)){
+        File::delete($path);
+    }
+}
+   /* This is for DRY */
    public function reFactoring($requestData,$blog)
    {
 
       $blog->title = $requestData->title;
       $blog->detail = $requestData->details;
-    //   $blog->feature = $requestData->image;
+      $blog->lang_framework = json_encode($requestData->framework);
+      $blog->development_sector = $requestData->development;
       $blog->slug = Str::slug($requestData->title);
+      $blog->author = "Mahmodul Karim";
       if($requestData->hasfile('image')){
 
         $file = $requestData->file('image');
@@ -49,7 +61,9 @@ class BlogController extends Controller
         //  dd(Auth::user());
         $requestData->validate(array(
             'title'=>'required|unique:posts|max:50|min:5',
-            'details'=>'required|max:250|min:50',
+            'details'=>'required|min:50',
+            'development'=>"required",
+            'framework'=>"required",
             // 'featureImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ),
     array(
@@ -59,6 +73,9 @@ class BlogController extends Controller
         'details.required'=>'Sorry, your filed is empty',
         'details.max'=>'Write maximum 250 characters',
         'details.min'=>'at least 50 characters must be input',
+        'framework.required'=>"Plz, check at least one Item",
+        'development.required'=>"Select any of them",
+
         // 'featureImage.required'=>'Plz, Select One file',
 
     )
@@ -103,18 +120,23 @@ class BlogController extends Controller
 
     public function deletePost($id)
     {
-        // return $id;
+       
         $removePost = Post::find($id);
         $removePost->delete();
+        $destination = 'assets/images/' . $removePost->profile_image;
+        $this->fileExisting($destination);
        return redirect('/all-blogs')->with('deleteMsg','Post Deleted Successfully');
 
     }
 
     public function editPost($id)
     {
-       $edit = Post::find($id,['id','title','detail','slug','feature']);
+       $edit = Post::find($id,['id','title','detail','slug','development_sector','lang_framework','feature']);
+      
+       $decode = json_decode($edit->lang_framework);
     
-       return view('backend.blog.updatePost',compact('edit'));
+    // dd($decode);
+       return view('backend.blog.updatePost',['edit'=>$edit,'checkValue'=> $decode]);
 
      /*   return back()
        ->with('success','You have successfully upload image.')
@@ -139,6 +161,8 @@ class BlogController extends Controller
      $updatePost =  Post::find($id);
 
     $this->reFactoring($request,$updatePost);
+    $destination = 'assets/images/' . $updatePost->profile_image;
+        $this->fileExisting($destination);
     return redirect()->route('allblogs')->with('update-success','Post Updated successfully');
 
     }
