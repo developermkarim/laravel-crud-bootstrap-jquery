@@ -31,7 +31,7 @@
 
 
 
-        <table class="table table-striped table-responsive table-hover">
+        <table class="table table-striped table-responsive table-hover" id="table-data">
 
             <thead>
                 <tr>
@@ -143,6 +143,8 @@
 @push('customjs')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
 <script>
    $(function(){
@@ -166,11 +168,14 @@
   }
 })
       })
+
+      $('#table-data').DataTable();
     
   });
 
 </script>
 
 @endpush
+
 @endsection
 

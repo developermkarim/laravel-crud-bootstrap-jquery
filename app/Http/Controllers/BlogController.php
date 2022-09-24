@@ -122,8 +122,9 @@ public function fileExisting($path)
     {
        
         $removePost = Post::find($id);
+        // dd($removePost->feature);
         $removePost->delete();
-        $destination = 'assets/images/' . $removePost->profile_image;
+        $destination = 'assets/images/' . $removePost->feature;
         $this->fileExisting($destination);
        return redirect('/all-blogs')->with('deleteMsg','Post Deleted Successfully');
 
