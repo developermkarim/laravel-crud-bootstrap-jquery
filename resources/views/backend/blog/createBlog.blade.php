@@ -39,15 +39,16 @@
              @error('framework')
              <p class="fw-bold text-danger">{{$message}}</p>
              @enderror
-            {{--  @if ($errors->has('hobbies'))
-            <span class="text-danger">{{ $errors->first('hobbies') }}</span>
-            @endif --}}
+           
             </div>
 
             <div class="mb-3">
              <label for="">Popularity In : </label><br>
              <input type="radio" name="development" value="Front-End Development" id=""> Front-End Development &nbsp;
              <input type="radio" name="development" value="Back-End Development" id=""> Back-End Development
+             <input type="radio" name="development" value="Android-App-Development" id=""> Android-App-Development
+             <input type="radio" name="development" value="Game-Development" id=""> Game-Development
+             <input type="radio" name="development" value="Desktop-App-Development" id=""> Desktop-App-Development
              @error('development')
                  {{$message}}
              @enderror
@@ -63,4 +64,7 @@
           </form>
     </div>
    </div>
+   @push('')
+       <script src=""></script>
+   @endpush
 @endsection

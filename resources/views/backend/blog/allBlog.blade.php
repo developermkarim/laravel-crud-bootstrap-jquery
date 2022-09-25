@@ -81,13 +81,17 @@
                             {{$post->status ? 'active' : 'deactive'}}
                         </span>
                     </td>
-                    <td class="text-center">
+                    <td class="text-center d-flex justify-content-between">
 
                     
-                      <a class="bg-success text-white" href="{{route('show.post',$post->id)}}">
-                      <img class="text-white"  alt="triangle with all three sides equal"
+                      <a class="btn bg-success text-white" href="{{route('show.post',$post->id)}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                          </svg>
+                      {{-- <img class="text-white"  alt="triangle with all three sides equal"
                       
-                      width="30px" src="{{url('/assets/images/eye.svg')}}">
+                      width="30px" src="{{url('/assets/images/eye.svg')}}"> --}}
                       </a>
                   
 
@@ -141,7 +145,7 @@
 </div>
 
 @push('customjs')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>

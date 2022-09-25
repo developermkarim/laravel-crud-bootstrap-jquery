@@ -64,6 +64,11 @@
              <label for="">Popularity In : </label><br>
              <input type="radio" name="development" value="Front-End Development" {{$edit->development_sector=='Front-End Development'?'checked':''}} id=""> Front-End Development &nbsp;
              <input type="radio" {{$edit->development_sector == 'Back-End Development' ?'checked':''}} name="development" value="Back-End Development" id=""> Back-End Development
+             <input type="radio" {{$edit->development_sector =='Android-App-Development'?'checked':''}} name="development" value="Android-App-Development" id=""> Android-App-Development
+             <input type="radio"  {{$edit->development_sector=='Game-Development'?'checked':''}} name="development" value="Game-Development" id=""> Game-Development
+            
+             <input type="radio"  {{$edit->development_sector=='Desktop-App-Development'?'checked':''}} name="development" value="Desktop-App-Development" id=""> Desktop-App-Development
+        
              @error('development')
                  {{$message}}
              @enderror
