@@ -7,8 +7,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## About Simple-Laravel-blog-Project
+---
+TO run This Project Plz, Follow These steps
 
+```bash
+1.Run git clone https://github.com/developermkarim/laravel-simple-blog-project.git
+2.Run composer install
+3. npm install (this is for Vue.js, Bootstrap.css, Lodash, and Laravel Mix)
+3.Run cp .env.example .env
+4.Run php artisan key:generate
+5.Run php artisan migrate
+6.Run php artisan serve
+7.Go to link localhost:8000
+```
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
