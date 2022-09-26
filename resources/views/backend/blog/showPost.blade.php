@@ -4,28 +4,41 @@
 @section('show-post-content')
 
 <div class="container">
-    <div class="row">
+    <div class="row w-75 m-auto">
        
-       
-    <div class="card-body">
-        <div class="card-header">
+        
+    <div class="card-body text-center">
+        <div class="card-header mb-3">
             <h2>{{$showBlog->title}}</h2>
+           
+            <small>{{$showBlog->development_sector}}</small>
+            <h6 class="card-title py-3">Author: {{$showBlog->author}}</h6>
         </div>
 
-        <img src="{{asset('/assets/images/' . $showBlog->feature)}}"  alt="" width="300px" height="300px">
+        <img style="display: inline-block" src="{{asset('/assets/images/' . $showBlog->feature)}}"  alt="" width="300px" height="300px">
         <div class="card text-center">
     
+            <h5>Used In 
+                @php
+                $jsonDecode = json_decode($showBlog->lang_framework);
+                foreach ($jsonDecode  as $value) {
+                  echo $value;echo ",";
+                }
+            @endphp
+            </h5>
 
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text"><>{{$showBlog->detail}}</p>
-      <a href="{{route('allblogs')}}" class="btn btn-primary">Go Back</a>
-    </div>
-    <div class="card-footer text-muted">
-        @php
+    
+
+      @php
         $convertDate = strtotime($showBlog->created_at);
             $date = date('d/M/Y H:i:s',$convertDate);
         @endphp
-     <span>{{$date}}</span>
+     <p class="">{{$date}}</p>
+      <p class="card-text"><>{{$showBlog->detail}}</p>
+      <a href="{{route('allblogs')}}" class="btn btn-primary w-25 m-auto">Go Back</a>
+    </div>
+    <div class="card-footer text-muted">
+       
     </div>
   </div>
 
@@ -35,5 +48,5 @@
 </div>
 
 
-<h4>Author {{$showBlog->added_by}}</h4>
+
 @endsection

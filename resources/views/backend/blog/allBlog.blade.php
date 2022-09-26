@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <h3 class="text-center"> Post Table</h3>
+        <a style="width:10% ;" class="nav-link py-2 text-center mb-3 ms-auto nav-link bg-primary rounded text-white" href="{{route('blog.add')}}">Add Blog Post</a>
         @if (session()->has('deleteMsg'))
         <div class="alert text-center alert-danger alert-dismissible fade show" role="alert">
             <strong>Holy {{$admin}}!</strong> {{session('deleteMsg')}}

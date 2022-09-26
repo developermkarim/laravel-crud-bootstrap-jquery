@@ -35,8 +35,8 @@
                     <!-- Left Side Of Navbar -->
                  
                     <ul class="navbar-nav m-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{route('blog.add')}}">Add Blog Post</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('allblogs')}}">All Blog Posts</a></li>
+                        <li class="nav-item"><a class="bg-primary rounded text-white nav-link" href="{{route('blog.add')}}">Add Blog Post</a></li>
+                        <li class="nav-item"><a class="nav-link bg-primary rounded text-white" href="{{route('allblogs')}}">All Blog Posts</a></li>
                         </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,8 +78,12 @@
             </div>
         </nav>
 
+       
         <main class="py-4">
-         @yield('update-blog-content-page')
+   
+            @yield('content')
+  
+            @yield('update-blog-content-page')
 
         @yield('blog-content')
      @yield('create-blog-content')
@@ -87,5 +91,6 @@
         </main> 
     </div>
     @stack('customjs')
+  
 </body>
 </html>
